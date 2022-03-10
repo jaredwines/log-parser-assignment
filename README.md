@@ -1,6 +1,6 @@
 # Log-Parser-Assignment
 
-Parses a log file into a CSV as while as gets the device type, browser, country, and state.
+Parses a log file into a CSV as while as get the device type, browser, country, and state.
 
 ## Installation
 
@@ -18,8 +18,12 @@ logParser.parseLogFileToCSV(pathToLogFile, pathToCSVFile)
 ```
 
 ## Command Line Usage
+
+Step 1: Install CLI version of log-parser-assignment.
 ```bash
 npm install -g log-parser-assignment
-
-log-parser-assignment pathToLogFile pathToGeneratedCSVFile
+```
+Step 2: Run CLI log-parser-assignment. [pathToLogFile] is the absolute path to the log file. [pathToGeneratedCSVFile] is the absolute path for the generated CSV file.
+```bash
+log-parser-assignment [pathToLogFile] [pathToGeneratedCSVFile]
 ```
