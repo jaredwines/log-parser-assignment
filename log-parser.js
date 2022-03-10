@@ -25,9 +25,11 @@ const parseLogFileToCSV = function (pathToLogFile, pathToCSVFile){
             { id: 'browers', title: 'Browers' }
         ]
     });
-    const geolite2 = require('geolite2');
-    const maxmind = require('maxmind');
-    var lookup = maxmind.open(geolite2.paths.city);
+    const fs = require('fs');
+    const Reader = require('@maxmind/geoip2-node').Reader;
+    const dbBuffer = fs.readFileSync('GeoLite2-City.mmdb');
+    const reader = Reader.openBuffer(dbBuffer);
+
 
 
     let line;
@@ -42,7 +44,7 @@ const parseLogFileToCSV = function (pathToLogFile, pathToCSVFile){
         parser.setUA(logEntryValues[5]);
         var result = parser.getResult();
 
-        var city = lookup.get((dateAndIP[0]));
+        var city = reader.city(dateAndIP[0]);
 
         let logEntry = {
             iPAddress: dateAndIP[0] != undefined ? dateAndIP[0] : 'undefined',
