@@ -26,8 +26,10 @@ const parseLogFileToCSV = function (pathToLogFile, pathToCSVFile){
         ]
     });
     const fs = require('fs');
+    const path = require('path');
     const Reader = require('@maxmind/geoip2-node').Reader;
-    const dbBuffer = fs.readFileSync('GeoLite2-City.mmdb');
+    var geoLite2Path = path.join(__dirname, '.', 'GeoLite2-City.mmdb');
+    const dbBuffer = fs.readFileSync(geoLite2Path);
     const reader = Reader.openBuffer(dbBuffer);
 
 
