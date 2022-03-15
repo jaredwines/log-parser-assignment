@@ -1,7 +1,6 @@
 const assert = require('assert');
 const logParser = require("../log-parser");
 const fs = require('fs');
-var stringSimilarity = require("string-similarity");
 
 describe("Log Parser", () => {
     before(() => {
