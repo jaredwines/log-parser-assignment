@@ -1,6 +1,6 @@
 {
   "name": "log-parser-assignment",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Parses a log file into a CSV as while as gets the device type, brower, country, and state.",
   "main": "index.js",
   "scripts": {

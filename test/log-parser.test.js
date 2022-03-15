@@ -2,9 +2,12 @@ const assert = require('assert');
 const logParser = require("../log-parser");
 const fs = require('fs');
 
+const pathToOutput = 'test/output.csv'
+const pathToLog = 'test/gobankingrates.com.access.test.log'
+
 describe("Log Parser", () => {
     before(() => {
-        logParser.parseLogFileToCSV('test/gobankingrates.com.access.test.log', 'test/output.csv')
+        logParser.parseLogFileToCSV(pathToLog, pathToOutput)
     });
         
     // We can add nested blocks for tests
@@ -12,8 +15,8 @@ describe("Log Parser", () => {
         
         it("Is the output file the same as the answer file.", () => {
             var testResults = false;
-            const outputFile = fs.readFileSync('test/output.csv').toString;
-            const AnswerFile = fs.readFileSync('test/answer.csv').toString;
+            const outputFile = fs.readFileSync(pathToOutput).toString;
+            const AnswerFile = fs.readFileSync(pathToLog).toString;
 
             if (outputFile === AnswerFile) {
                 testResults = true;
@@ -21,5 +24,9 @@ describe("Log Parser", () => {
             assert.equal(testResults, true)
         });
 
+    });
+    
+    after(() => {
+        fs.unlinkSync(pathToOutput)
     });
 });
